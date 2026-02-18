@@ -33,10 +33,19 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .logo img { height: 80px; width: auto; display: block; }
+        .logo img { 
+            height: 120px; /* Increased for Desktop */
+            width: auto; 
+            display: block; 
+        }
 
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { margin-left: 15px; }
+        .nav-links { 
+            display: flex; 
+            list-style: none; /* Removes the black circles */
+            align-items: center; 
+        }
+        
+        .nav-links li { margin-left: 15px; list-style-type: none; }
 
         .nav-links a {
             text-decoration: none;
@@ -53,7 +62,6 @@
             color: white;
         }
 
-        /* Bordered Verification Button as per design */
         .nav-links a.verify-btn {
             border: 2px solid var(--text-gray);
             padding: 8px 20px;
@@ -61,11 +69,12 @@
         
         .nav-links a.verify-btn:hover {
             border-color: var(--primary-blue);
+            background-color: var(--primary-blue);
         }
 
-        .hamburger { display: none; cursor: pointer; font-size: 28px; }
+        .hamburger { display: none; cursor: pointer; font-size: 28px; color: var(--text-gray); }
 
-        /* Global Hero Section - Now outside of .page div */
+        /* Hero Section */
         .hero {
             height: 90vh;
             background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('bg.jpg');
@@ -77,7 +86,7 @@
         .hero p { font-size: 1.2rem; margin: 15px 0 30px; }
 
         .btn-container { display: flex; gap: 15px; }
-        .btn-black { background: #222; color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; }
+        .btn-black { background: #222; color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; display: inline-block; text-align: center;}
         .btn-black:hover { background: #000; }
         .btn-blue { background: var(--primary-blue); color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; }
 
@@ -88,6 +97,9 @@
         .section-padding { padding: 60px 10%; text-align: center; }
         .blue-title { color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 20px; }
         .about-text { max-width: 900px; margin: 0 auto 40px; line-height: 1.8; font-size: 1rem; color: #444; }
+
+        /* Reused Chairman Component Styling */
+        .chairman-card { margin-bottom: 50px; text-align: left; }
 
         /* Team Layout */
         .team-row {
@@ -104,7 +116,7 @@
         /* Advantages Grid */
         .advantages-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; margin-top: 50px;
+            gap: 20px; margin: 40px 0 60px 0;
         }
         .adv-card {
             background: white; padding: 30px; border-radius: 10px;
@@ -112,7 +124,7 @@
         }
         .adv-card i { font-size: 40px; color: #f0ad4e; margin-bottom: 15px; }
 
-        /* Form Styling (Verify & Certificate) */
+        /* Form Styling */
         .form-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left; }
         .input-group { margin-bottom: 20px; }
         .input-label { display: block; margin-bottom: 8px; font-weight: 600; }
@@ -136,7 +148,18 @@
         .social-icons a:hover { color: var(--primary-blue); }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100px; left: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .logo img { height: 80px; } /* Kept original for mobile */
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: white; 
+                padding: 20px; 
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+            }
             .nav-links.active { display: flex; }
             .nav-links li { margin: 10px 0; width: 100%; text-align: center; }
             .hamburger { display: block; }
@@ -167,6 +190,20 @@
         </div>
     </section>
 
+    <template id="chairman-template">
+        <div class="team-row chairman-card">
+            <div class="team-content">
+                <h2 class="blue-title" style="font-size: 2rem;">Chairman</h2>
+                <h3>Engr Farooq Baloch</h3>
+                <p><strong>Automotive Engineer 22 UET Lahore</strong></p><br>
+                <p>I'm honored to introduce the Serve and Lead Society, which I proudly founded with a vision to empower UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
+            </div>
+            <div class="team-img-wrapper">
+                <img src="cr.jpg" alt="Chairman Farooq Baloch">
+            </div>
+        </div>
+    </template>
+
     <div id="home" class="page-content active">
         <section id="about-section" class="section-padding">
             <h2 class="blue-title">About us</h2>
@@ -175,17 +212,14 @@
                 Our vision is to empower students by creating a dynamic platform where potential meets opportunity. We are dedicated to providing meaningful internships, job placements, and career counseling sessions.
             </p>
 
-            <div class="team-row">
-                <div class="team-content">
-                    <h2 class="blue-title" style="font-size: 2rem;">Chairman</h2>
-                    <h3>Engr Farooq Baloch</h3>
-                    <p><strong>Automotive Engineer 22 UET Lahore</strong></p><br>
-                    <p>I'm honored to introduce the Serve and Lead Society, which I proudly founded with a vision to empower UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
-                </div>
-                <div class="team-img-wrapper">
-                    <img src="cr.jpg" alt="Chairman Farooq Baloch">
-                </div>
+            <div class="advantages-grid">
+                <div class="adv-card"><i class="fas fa-users"></i><h3>50+</h3><p>Success Interviews</p></div>
+                <div class="adv-card"><i class="fas fa-user-tie"></i><h3>3</h3><p>Executive Members</p></div>
+                <div class="adv-card"><i class="fas fa-id-card"></i><h3>200+</h3><p>Members</p></div>
+                <div class="adv-card"><i class="fas fa-check-circle"></i><h3>10+</h3><p>Jobs Secured</p></div>
             </div>
+
+            <div id="about-chairman-container"></div>
 
             <div class="team-row reverse">
                 <div class="team-content">
@@ -197,13 +231,6 @@
                 <div class="team-img-wrapper">
                     <img src="pre.jpg" alt="President Ali Hassan">
                 </div>
-            </div>
-
-            <div class="advantages-grid">
-                <div class="adv-card"><i class="fas fa-users"></i><h3>50+</h3><p>Success Interviews</p></div>
-                <div class="adv-card"><i class="fas fa-user-tie"></i><h3>3</h3><p>Executive Members</p></div>
-                <div class="adv-card"><i class="fas fa-id-card"></i><h3>200+</h3><p>Members</p></div>
-                <div class="adv-card"><i class="fas fa-check-circle"></i><h3>10+</h3><p>Jobs Secured</p></div>
             </div>
         </section>
     </div>
@@ -222,7 +249,10 @@
 
     <div id="certificates" class="page-content">
         <section class="section-padding">
+            <div id="cert-chairman-container"></div>
+            
             <h2 class="blue-title">Membership <span style="color: #000;">Certificates</span></h2>
+            <p style="margin-bottom: 20px;">Enter your credentials below to download your official society certificate.</p>
             <div class="form-container">
                 <div class="input-group">
                     <label class="input-label">Membership ID</label>
@@ -240,6 +270,8 @@
 
     <div id="verify" class="page-content">
         <section class="section-padding">
+            <div id="verify-chairman-container"></div>
+
             <h2 class="blue-title">Members <span style="color: #000;">Verification</span></h2>
             <div class="form-container">
                 <div class="input-group">
@@ -278,8 +310,7 @@
     </footer>
 
     <script>
-        // Updated Member Database with Phone Numbers
-        // Important: Add the full mobile number here from your Excel
+        // Database
         const members = [
              { id: "2025-SLS-0123", name: "Farea Rizwan", phone: "3174111730" },
              { id: "2025-SLS-0124", name: "Aleeza Saddique", phone: "3187692779" },
@@ -344,28 +375,37 @@
              { id: "2025-SLS-0183", name: "Ammar Ahmad Khan", phone: "3189466228" },
              { id: "2025-SLS-0184", name: "Ali Hassan", phone: "3404445624" },
              { id: "2025-SLS-0185", name: "Muhammad Asim", phone: "3217283403" },
-             { id: "2025-SLS-0186", name: "Ali Shehzad", phone: "3255723412" },
-            // ... Add others here following the same format
+             { id: "2025-SLS-0186", name: "Ali Shehzad", phone: "3255723412" }
         ];
 
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+        // Populate Chairman info on load
+        window.onload = function() {
+            const template = document.getElementById('chairman-template');
+            const containers = ['about-chairman-container', 'cert-chairman-container', 'verify-chairman-container'];
             
-            // Show selected page
+            containers.forEach(id => {
+                const clone = template.content.cloneNode(true);
+                document.getElementById(id).appendChild(clone);
+            });
+        };
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             
-            // Auto-scroll to content area below hero
+            // Auto-scroll logic
             document.getElementById(pageId).scrollIntoView({ behavior: 'smooth' });
 
-            if(window.innerWidth <= 768) toggleMenu(); 
+            // Close mobile menu if open
+            if(document.getElementById('navLinks').classList.contains('active')) {
+                toggleMenu();
+            }
         }
 
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Verification Logic
         function runVerification() {
             const idInput = document.getElementById('memberId').value.trim();
             const display = document.getElementById('resultDisplay');
@@ -380,25 +420,19 @@
             }
         }
 
-        // Certificate Download Logic
         function downloadCertificate() {
             const idInput = document.getElementById('certId').value.trim();
             const passInput = document.getElementById('certPass').value.trim();
             const display = document.getElementById('certResult');
-            
             const found = members.find(m => m.id === idInput);
 
             if(found) {
-                // Get last 4 digits of the phone number
                 const lastFour = found.phone.slice(-4);
-                
                 if(passInput === lastFour) {
                     display.style.color = "green";
                     display.innerHTML = "Processing Download...";
-                    
-                    // Create a temporary link to download the PDF
                     const link = document.createElement('a');
-                    link.href = `${found.id}.pdf`; // Files must be named e.g. 2025-SLS-0001.pdf
+                    link.href = `${found.id}.pdf`;
                     link.download = `${found.id}.pdf`;
                     document.body.appendChild(link);
                     link.click();
