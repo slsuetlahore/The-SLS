@@ -34,19 +34,20 @@
         }
 
         .logo img { 
-            height: 120px; /* Increased for Desktop */
+            height: 100px; 
             width: auto; 
             display: block; 
         }
 
         .nav-links { 
             display: flex; 
-            list-style: none; /* Removes the black circles */
+            list-style: none; 
             align-items: center; 
         }
         
-        .nav-links li { margin-left: 15px; list-style-type: none; }
+        .nav-links li { margin-left: 10px; list-style: none; }
 
+        /* Unified Button Style */
         .nav-links a {
             text-decoration: none;
             color: var(--text-gray);
@@ -55,37 +56,41 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             display: inline-block;
+            border: 2px solid transparent; /* Keeps spacing consistent */
         }
 
+        /* Unified Hover State */
         .nav-links a:hover {
             background-color: var(--primary-blue);
             color: white;
-        }
-
-        .nav-links a.verify-btn {
-            border: 2px solid var(--text-gray);
-            padding: 8px 20px;
-        }
-        
-        .nav-links a.verify-btn:hover {
             border-color: var(--primary-blue);
-            background-color: var(--primary-blue);
         }
 
-        .hamburger { display: none; cursor: pointer; font-size: 28px; color: var(--text-gray); }
+        .hamburger { 
+            display: none; 
+            cursor: pointer; 
+            font-size: 28px; 
+            color: var(--text-gray); 
+        }
 
         /* Hero Section */
         .hero {
-            height: 90vh;
+            min-height: 90vh;
             background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('bg.jpg');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            background-size: cover; 
+            background-position: center;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+            padding: 20px;
             margin-top: 80px;
         }
-        .hero h1 { font-size: 3.5rem; font-weight: 900; color: #000; text-transform: uppercase; line-height: 1.1; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; color: #000; text-transform: uppercase; line-height: 1.1; max-width: 900px; }
         .hero p { font-size: 1.2rem; margin: 15px 0 30px; }
 
-        .btn-container { display: flex; gap: 15px; }
+        .btn-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
         .btn-black { background: #222; color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; display: inline-block; text-align: center;}
         .btn-black:hover { background: #000; }
         .btn-blue { background: var(--primary-blue); color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; }
@@ -97,9 +102,6 @@
         .section-padding { padding: 60px 10%; text-align: center; }
         .blue-title { color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 20px; }
         .about-text { max-width: 900px; margin: 0 auto 40px; line-height: 1.8; font-size: 1rem; color: #444; }
-
-        /* Reused Chairman Component Styling */
-        .chairman-card { margin-bottom: 50px; text-align: left; }
 
         /* Team Layout */
         .team-row {
@@ -115,7 +117,7 @@
 
         /* Advantages Grid */
         .advantages-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px; margin: 40px 0 60px 0;
         }
         .adv-card {
@@ -132,23 +134,27 @@
         .result-msg { margin-top: 20px; font-weight: bold; font-size: 1.2rem; text-align: center; }
 
         /* Events */
-        .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
         .event-btn {
             background: var(--primary-blue); color: white; padding: 40px 20px;
-            border-radius: 10px; text-decoration: none; font-size: 1.5rem; font-weight: bold;
+            border-radius: 10px; text-decoration: none; font-size: 1.3rem; font-weight: bold;
             transition: transform 0.3s; display: block; border: none; cursor: pointer; width: 100%;
         }
         .event-btn:hover { transform: translateY(-10px); background: #46b8da; }
 
         /* Footer */
         footer { background: var(--dark-bg); color: white; padding: 50px 10% 20px; }
-        .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
-        .social-icons { margin-top: 20px; display: flex; gap: 15px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .social-icons { margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap; }
         .social-icons a { color: white; font-size: 24px; transition: 0.3s; }
         .social-icons a:hover { color: var(--primary-blue); }
 
+        /* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
-            .logo img { height: 80px; } /* Kept original for mobile */
+            nav { padding: 10px 20px; }
+            .logo img { height: 60px; }
+            .hamburger { display: block; }
+
             .nav-links { 
                 display: none; 
                 flex-direction: column; 
@@ -157,14 +163,26 @@
                 left: 0; 
                 width: 100%; 
                 background: white; 
-                padding: 20px; 
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+                padding: 20px 0; 
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
             }
+
             .nav-links.active { display: flex; }
-            .nav-links li { margin: 10px 0; width: 100%; text-align: center; }
-            .hamburger { display: block; }
-            .hero h1 { font-size: 2.2rem; }
+            .nav-links li { margin: 5px 0; width: 100%; text-align: center; }
+            .nav-links a { width: 80%; padding: 12px; }
+
+            .hero { margin-top: 60px; height: auto; padding: 80px 20px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            
+            .section-padding { padding: 40px 5%; }
+            .blue-title { font-size: 1.8rem; }
+            
             .team-row, .team-row.reverse { flex-direction: column; text-align: center; }
+            .team-img-wrapper img { max-width: 280px; }
+            
+            .form-container { padding: 20px; }
         }
     </style>
 </head>
@@ -177,7 +195,7 @@
             <li><a href="#" onclick="showPage('home')">About</a></li>
             <li><a href="#" onclick="showPage('events')">Events</a></li>
             <li><a href="#" onclick="showPage('certificates')">Certificates</a></li>
-            <li><a href="#" onclick="showPage('verify')" class="verify-btn">Verification</a></li>
+            <li><a href="#" onclick="showPage('verify')">Verification</a></li>
         </ul>
     </nav>
 
@@ -195,7 +213,7 @@
             <div class="team-content">
                 <h2 class="blue-title" style="font-size: 2rem;">Chairman</h2>
                 <h3>Engr Farooq Baloch</h3>
-                <p><strong>Automotive Engineer 22 UET Lahore</strong></p><br>
+                <p><strong>Automotive Engineer 22 UET Lahore</strong></p>
                 <p>I'm honored to introduce the Serve and Lead Society, which I proudly founded with a vision to empower UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
             </div>
             <div class="team-img-wrapper">
@@ -225,7 +243,7 @@
                 <div class="team-content">
                     <h2 class="blue-title" style="font-size: 2rem;">President</h2>
                     <h3>Ali Hassan (2025-26)</h3>
-                    <p><strong>Mechanical Engineer 22 UET Lahore</strong></p><br>
+                    <p><strong>Mechanical Engineer 22 UET Lahore</strong></p>
                     <p>I'm honored to introduce the Serve and Lead Society, a vision dedicated to empowering UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
                 </div>
                 <div class="team-img-wrapper">
@@ -250,7 +268,6 @@
     <div id="certificates" class="page-content">
         <section class="section-padding">
             <div id="cert-chairman-container"></div>
-            
             <h2 class="blue-title">Membership <span style="color: #000;">Certificates</span></h2>
             <p style="margin-bottom: 20px;">Enter your credentials below to download your official society certificate.</p>
             <div class="form-container">
@@ -271,7 +288,6 @@
     <div id="verify" class="page-content">
         <section class="section-padding">
             <div id="verify-chairman-container"></div>
-
             <h2 class="blue-title">Members <span style="color: #000;">Verification</span></h2>
             <div class="form-container">
                 <div class="input-group">
@@ -305,12 +321,11 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 40px; border-top: 1px solid #444; padding-top: 20px;">
-            <p>@2025 Serve & Lead Society. <a href="#" style="float: right; color: white;"><i class="fas fa-arrow-up"></i></a></p>
+            <p>©2025 Serve & Lead Society. <a href="#" style="float: right; color: white;"><i class="fas fa-arrow-up"></i></a></p>
         </div>
     </footer>
 
     <script>
-        // Database
         const members = [
              { id: "2025-SLS-0123", name: "Farea Rizwan", phone: "3174111730" },
              { id: "2025-SLS-0124", name: "Aleeza Saddique", phone: "3187692779" },
@@ -378,7 +393,6 @@
              { id: "2025-SLS-0186", name: "Ali Shehzad", phone: "3255723412" }
         ];
 
-        // Populate Chairman info on load
         window.onload = function() {
             const template = document.getElementById('chairman-template');
             const containers = ['about-chairman-container', 'cert-chairman-container', 'verify-chairman-container'];
@@ -392,13 +406,10 @@
         function showPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            
-            // Auto-scroll logic
-            document.getElementById(pageId).scrollIntoView({ behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            // Close mobile menu if open
-            if(document.getElementById('navLinks').classList.contains('active')) {
-                toggleMenu();
+            if(window.innerWidth <= 768) {
+                document.getElementById('navLinks').classList.remove('active');
             }
         }
 
@@ -439,7 +450,7 @@
                     document.body.removeChild(link);
                 } else {
                     display.style.color = "red";
-                    display.innerHTML = "Incorrect Password (Last 4 digits of Mobile).";
+                    display.innerHTML = "Incorrect Password.";
                 }
             } else {
                 display.style.color = "red";
