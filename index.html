@@ -446,8 +446,10 @@
                     display.style.color = "green";
                     display.innerHTML = "Processing Download...";
                     const link = document.createElement('a');
-                    link.href = `${found.id}.pdf`;
-                    link.download = `${found.id}.pdf`;
+                    // ID mein se aakhri 4 digits nikaalne ke liye (e.g., 0122)
+                    const shortId = found.id.slice(-4); 
+                    link.href = `${shortId}.pdf`; 
+                    link.download = `${shortId}.pdf`;
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
