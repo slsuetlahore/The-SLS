@@ -97,6 +97,15 @@
         .btn-black:hover { background: #000; }
         .btn-blue { background: var(--primary-blue); color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; }
 
+        /* Pehle sab pages par hide kar dein */
+        #globalHero {
+            display: none;
+        }
+        /* Sirf home page par show karein */
+        .home-page #globalHero {
+            display: block;
+        }
+                
         /* Page Management */
         .page-content { display: none; }
         .page-content.active { display: block; }
