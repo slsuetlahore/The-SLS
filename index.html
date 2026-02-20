@@ -96,7 +96,20 @@
         .btn-black { background: #222; color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; display: inline-block; text-align: center;}
         .btn-black:hover { background: #000; }
         .btn-blue { background: var(--primary-blue); color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-                
+
+        /* Sabse pehle hero ko chhupa dein */
+        #globalHero {
+            display: none;
+        }  
+        /* Agar 'home' page active ho, toh hero dikhao */
+        #home.active ~ #globalHero,
+        #home.active + #globalHero,
+        #globalHero:has(~ #home.active),
+        #globalHero:has(~ #events.active) {
+            display: block;
+        }
+
+/* Sabse asaan aur pakka tareeqa JS ke zariye (Neeche dekhen) */
         /* Page Management */
         .page-content { display: none; }
         .page-content.active { display: block; }
