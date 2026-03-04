@@ -44,9 +44,7 @@
             list-style: none; 
             align-items: center; 
         }
-        img {
-    margin-bottom: 40px; /* Is value ko apni zaroorat ke mutabiq change kar len */
-       }
+        
         .nav-links li { margin-left: 10px; list-style: none; }
 
         /* Unified Button Style */
@@ -58,7 +56,7 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             display: inline-block;
-            border: 2px solid transparent; /* Keeps spacing consistent */
+            border: 2px solid transparent;
         }
 
         /* Unified Hover State */
@@ -75,7 +73,7 @@
             color: var(--text-gray); 
         }
 
-        /* Hero Section */
+        /* Hero Section - Will be hidden on certain pages via JavaScript */
         .hero {
             min-height: 90vh;
             background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('bg.jpg');
@@ -89,6 +87,7 @@
             padding: 20px;
             margin-top: 80px;
         }
+        
         .hero h1 { font-size: 3.5rem; font-weight: 900; color: #000; text-transform: uppercase; line-height: 1.1; max-width: 900px; }
         .hero p { font-size: 1.2rem; margin: 15px 0 30px; }
 
@@ -135,10 +134,31 @@
         .verify-input { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 1.1rem; }
         .result-msg { margin-top: 20px; font-weight: bold; font-size: 1.2rem; text-align: center; }
 
+        /* Certificate Display */
+        .certificate-image-container {
+            margin-top: 30px;
+            text-align: center;
+            border: 2px dashed var(--primary-blue);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .certificate-image-container img {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .download-btn {
+            margin-top: 20px;
+        }
+
         /* Blog Section Styling */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
         .blog-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: left; }
-        .blog-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 0; } /* Reset margin-bottom for blog images */
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
         .blog-info { padding: 20px; }
         .blog-info h3 { margin-bottom: 10px; color: var(--text-gray); }
         .blog-info p { font-size: 0.9rem; line-height: 1.6; color: #666; }
@@ -210,28 +230,15 @@
         </ul>
     </nav>
 
+    <!-- Hero Section - Will be hidden on Certification, Verification, and Blog pages -->
     <section class="hero" id="globalHero">
         <h1>Building leaders through service</h1>
         <p>Society at Lahore</p>
         <div class="btn-container">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1shQiFjBKbMB1s4t35GRDyb3BYENzkZlP-iy3C6Gi1hzNEQ/viewform" class="btn-black" target="_blank">Got Membership</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1shQiFjBKbMB1s4t35GRDyb3BYENzkZlP-iy3C6Gi1hzNEQ/viewform" class="btn-black" target="_blank">Get Membership</a>
             <a href="#about-section" class="btn-blue" onclick="showPage('home')">Read More</a>
         </div>
     </section>
-
-    <template id="chairman-template">
-        <div class="team-row chairman-card">
-            <div class="team-content">
-                <h2 class="blue-title" style="font-size: 2rem;">Chairman</h2>
-                <h3>Engr Farooq Baloch</h3>
-                <p><strong>Automotive Engineer</strong></p>
-                <p>I'm honored to introduce the Serve and Lead Society, which I proudly founded with a vision to empower UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
-            </div>
-            <div class="team-img-wrapper">
-                <img src="cr.jpg" alt="Chairman Farooq Baloch">
-            </div>
-        </div>
-    </template>
 
     <div id="home" class="page-content active">
         <section id="about-section" class="section-padding">
@@ -249,7 +256,17 @@
                 <div class="adv-card"><i class="fas fa-check-circle"></i><h3>10+</h3><p>Jobs Secured</p></div>
             </div>
 
-            <div id="about-chairman-container"></div>
+            <div class="team-row chairman-card">
+                <div class="team-content">
+                    <h2 class="blue-title" style="font-size: 2rem;">Chairman</h2>
+                    <h3>Engr Farooq Baloch</h3>
+                    <p><strong>Automotive Engineer</strong></p>
+                    <p>I'm honored to introduce the Serve and Lead Society, which I proudly founded with a vision to empower UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
+                </div>
+                <div class="team-img-wrapper">
+                    <img src="cr.jpg" alt="Chairman Farooq Baloch">
+                </div>
+            </div>
 
             <div class="team-row reverse">
                 <div class="team-content">
@@ -261,17 +278,21 @@
                 <div class="team-img-wrapper">
                     <img src="pre.jpg" alt="President Ali Hassan">
                 </div>
-             <div class="team-row chairman-card">
+            </div>
+            
+            <div class="team-row chairman-card">
                 <div class="team-content">
                     <h2 class="blue-title" style="font-size: 2rem;">Vice President</h2>
                     <h3>Ali Shehzad (2025-26)</h3>
                     <p><strong>Automotive Engineer</strong></p>
-                    <p>I’m honored to serve as the Vice President of the Serve and Lead Society, a platform dedicated to empowering UET Lahore students through learning, leadership, and service. Our mission is to guide students in exploring their potential, building their professional paths, and contributing meaningfully to society through internships, welfare initiatives, and educational opportunities. I encourage all students to join us — to learn with purpose, lead with confidence, and work together toward growth and excellence.</p>
+                    <p>I'm honored to serve as the Vice President of the Serve and Lead Society, a platform dedicated to empowering UET Lahore students through learning, leadership, and service. Our mission is to guide students in exploring their potential, building their professional paths, and contributing meaningfully to society through internships, welfare initiatives, and educational opportunities. I encourage all students to join us — to learn with purpose, lead with confidence, and work together toward growth and excellence.</p>
                 </div>
                 <div class="team-img-wrapper">
                     <img src="Shehzad.jpg" alt="Vice President Ali Shehzad">
                 </div>
-             <div class="team-row reverse">
+            </div>
+            
+            <div class="team-row reverse">
                 <div class="team-content">
                     <h2 class="blue-title" style="font-size: 2rem;">General Secretary</h2>
                     <h3>Nayyab Khalid (2025-26)</h3>
@@ -289,7 +310,7 @@
         <section class="section-padding">
             <h2 class="blue-title">Our <span style="color: #000;">Events</span></h2>
             <div class="events-grid">
-                <button class="event-btn">Welcome Event</span></button>
+                <button class="event-btn">Welcome Event</button>
                 <button class="event-btn">Career Counseling</button>
                 <button class="event-btn">Internship Fair</button>
                 <button class="event-btn">Farewell Night</button>
@@ -300,52 +321,59 @@
     <div id="certificates" class="page-content">
         <section class="section-padding">
             
-           <div class="team-row chairman-card">
-            <div class="team-content">
-                <h2 class="blue-title" style="font-size: 2rem;">Chairman's Message</h2>
-                <h3>Farooq Baloch</h3>
-                <p><strong>Automotive Engineer</strong></p>
-                <p>I’m honored to lead the Serve and Lead Society as its Chairman and Founder, guiding UET Lahore students toward growth, leadership, and meaningful service. Our mission is to empower students to unlock their potential, pursue opportunities, and make a real impact in their community.</p>
+            <div class="team-row chairman-card">
+                <div class="team-content">
+                    <h2 class="blue-title" style="font-size: 2rem;">Chairman's Message</h2>
+                    <h3>Farooq Baloch</h3>
+                    <p><strong>Automotive Engineer</strong></p>
+                    <p>I'm honored to lead the Serve and Lead Society as its Chairman and Founder, guiding UET Lahore students toward growth, leadership, and meaningful service. Our mission is to empower students to unlock their potential, pursue opportunities, and make a real impact in their community.</p>
+                </div>
+                <div class="team-img-wrapper">
+                    <img src="cr2.jpg" alt="Farooq Baloch">
+                </div>
             </div>
-            <div class="team-img-wrapper">
-                <img src="cr2.jpg" alt="Farooq Baloch">
-            </div>
-         </div>
                 
             <h2 class="blue-title">Membership <span style="color: #000;">Certificates</span></h2>
-            <p style="margin-bottom: 20px;">Enter your credentials below to download your membership certificate.</p>
+            <p style="margin-bottom: 20px;">Enter your credentials below to view and download your membership certificate.</p>
             <div class="form-container">
                 <div class="input-group">
                     <label class="input-label">Membership ID</label>
                     <input type="text" id="certId" class="verify-input" placeholder="20XX-SLS-XXXX">
                 </div>
                 <div class="input-group">
-                    <label class="input-label">Password</label>
+                    <label class="input-label">Password (Last 4 digits of Phone Number)</label>
                     <input type="password" id="certPass" class="verify-input" placeholder="XXXX">
                 </div>
-                <button class="btn-black" style="width: 100%;" onclick="downloadCertificate()">Download</button>
+                <button class="btn-black" style="width: 100%; margin-bottom: 10px;" onclick="verifyAndShowCertificate()">View Certificate</button>
+                <button class="btn-black" style="width: 100%; margin-bottom: 10px; background-color: var(--primary-blue);" onclick="downloadCertificate()" id="downloadBtn" disabled>Download Certificate</button>
                 <div id="certResult" class="result-msg"></div>
-                <button class="btn-black" style="width: 100%;" onclick="window.location.href='https://other-certificates.vercel.app/'">
-                View Other Certificates
+                
+                <!-- Certificate Image Display Container -->
+                <div id="certificateImageContainer" class="certificate-image-container">
+                    <img id="certificateImage" src="" alt="Membership Certificate">
+                </div>
+                
+                <button class="btn-black" style="width: 100%; margin-top: 20px;" onclick="window.location.href='https://other-certificates.vercel.app/'">
+                    View Other Certificates
                 </button>
             </div>
         </section>
     </div>
 
     <div id="verify" class="page-content">
-         <section class="section-padding">
+        <section class="section-padding">
            
-             <div class="team-row chairman-card">
-            <div class="team-content">
-                <h2 class="blue-title" style="font-size: 2rem;">Founder's Message</h2>
-                <h3>M Farooq Ahmad</h3>
-                <p><strong>Automotive Engineer</strong></p>
-                <p>I’m honored to lead the Serve and Lead Society as its Chairman and Founder, guiding UET Lahore students toward growth, leadership, and meaningful service. Our mission is to empower students to unlock their potential, pursue opportunities, and make a real impact in their community.</p>
-            </div>
-            <div class="team-img-wrapper">
-                <img src="cr1.jpg" alt="Farooq Baloch">
-            </div>
-         </div>        
+            <div class="team-row chairman-card">
+                <div class="team-content">
+                    <h2 class="blue-title" style="font-size: 2rem;">Founder's Message</h2>
+                    <h3>M Farooq Ahmad</h3>
+                    <p><strong>Automotive Engineer</strong></p>
+                    <p>I'm honored to lead the Serve and Lead Society as its Chairman and Founder, guiding UET Lahore students toward growth, leadership, and meaningful service. Our mission is to empower students to unlock their potential, pursue opportunities, and make a real impact in their community.</p>
+                </div>
+                <div class="team-img-wrapper">
+                    <img src="cr1.jpg" alt="Farooq Baloch">
+                </div>
+            </div>        
             
             <h2 class="blue-title">Members <span style="color: #000;">Verification</span></h2>
             <div class="form-container">
@@ -358,6 +386,7 @@
             </div>
         </section>
     </div>
+    
     <div id="blog" class="page-content">
         <section class="section-padding">
             <h2 class="blue-title">Society <span style="color: #000;">Blog</span></h2>
@@ -381,3 +410,287 @@
                     <img src="b.jpg" alt="Blog 3">
                     <div class="blog-info">
                         <h3>Community Service Day</h3>
+                        <p>Serving the community is our core mission. Read about our recent welfare activities in this section.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+                
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Address</h3>
+                <p>The SLS</p>
+                <p>Lahore, PAKISTAN</p>
+                <p>Tel: +92 314 1683 402</p>
+                <p>Mail: serveandleadsociety@gmail.com</p>
+            </div>
+            <div>
+                <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/company/serve-lead-society/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/people/Serve-Lead-Society/61582794662320/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/serveandleadsociety" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:serveandleadsociety@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/923141683402" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; border-top: 1px solid #444; padding-top: 20px;">
+            <p>©2025 Serve & Lead Society. <a href="#" style="float: right; color: white;"><i class="fas fa-arrow-up"></i></a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Member data
+        const members = [
+             { id: "2025-SLS-0122", name: "Haiqa Munir", phone: "3280464626" },
+             { id: "2025-SLS-0123", name: "Farea Rizwan", phone: "3174111730" },
+             { id: "2025-SLS-0124", name: "Aleeza Saddique", phone: "3187692779" },
+             { id: "2025-SLS-0125", name: "Fatima Moazzam", phone: "3154020371" },
+             { id: "2025-SLS-0126", name: "Ali Hamza", phone: "3326639193" },
+             { id: "2025-SLS-0127", name: "Hannan Ali", phone: "3048959318" },
+             { id: "2025-SLS-0128", name: "Anam Hanif", phone: "3265613613" },
+             { id: "2025-SLS-0129", name: "Hafiza Alina Hassan", phone: "3091019071" },
+             { id: "2025-SLS-0130", name: "Sarwat Ikhlaq", phone: "3325992567" },
+             { id: "2025-SLS-0131", name: "Muhammad Usman Ahmed", phone: "3136091478" },
+             { id: "2025-SLS-0132", name: "Nayyab khalid", phone: "3430460410" },
+             { id: "2025-SLS-0133", name: "Mehwish khadim", phone: "3484254714" },
+             { id: "2025-SLS-0134", name: "Muhammad Abu Bakar Nawaz", phone: "3116136022" },
+             { id: "2025-SLS-0135", name: "Maham Ishfaq", phone: "3264799157" },
+             { id: "2025-SLS-0136", name: "Farhan Ullah Khan", phone: "3316293336" },
+             { id: "2025-SLS-0137", name: "Muhammad Amir", phone: "3114025327" },
+             { id: "2025-SLS-0138", name: "Gulfam Ali", phone: "3057296773" },
+             { id: "2025-SLS-0139", name: "Muhammad Qamar", phone: "3049196709" },
+             { id: "2025-SLS-0140", name: "Muhammad Zain", phone: "3094711160" },
+             { id: "2025-SLS-0141", name: "Muhammad Mubeen", phone: "3257846672" },
+             { id: "2025-SLS-0142", name: "Muhammad Anas", phone: "3278732382" },
+             { id: "2025-SLS-0143", name: "Abdullah Hassaan", phone: "3325332071" },
+             { id: "2025-SLS-0144", name: "Saqlain Mansab", phone: "3217137316" },
+             { id: "2025-SLS-0145", name: "Abdulrehman", phone: "3116273684" },
+             { id: "2025-SLS-0146", name: "Haider Ali", phone: "3421641859" },
+             { id: "2025-SLS-0147", name: "Sudais Ahmad", phone: "3253163610" },
+             { id: "2025-SLS-0148", name: "Faisal Rafique", phone: "3251788800" },
+             { id: "2025-SLS-0149", name: "Wasi Haider", phone: "3176926197" },
+             { id: "2025-SLS-0150", name: "Syed Muhammad Saleh Bukhari", phone: "3710581920" },
+             { id: "2025-SLS-0151", name: "Muhammad Umer", phone: "3086662650" },
+             { id: "2025-SLS-0152", name: "Faizan Nazir", phone: "3170619122" },
+             { id: "2025-SLS-0153", name: "Amara Abbas", phone: "3259521792" },
+             { id: "2025-SLS-0154", name: "Ahsan Shahzad", phone: "3016364854" },
+             { id: "2025-SLS-0155", name: "Rehman Ali", phone: "3280590109" },
+             { id: "2025-SLS-0156", name: "Ahmad Baig", phone: "3184254095" },
+             { id: "2025-SLS-0157", name: "Jawad Ali", phone: "3228306031" },
+             { id: "2025-SLS-0158", name: "Humayoon saeed", phone: "3454140158" },
+             { id: "2025-SLS-0159", name: "Muhammad Zain Shabbir", phone: "3062815796" },
+             { id: "2025-SLS-0160", name: "Abdul Kareem", phone: "3164252822" },
+             { id: "2025-SLS-0161", name: "Muhammad Saad ASif", phone: "3276097667" },
+             { id: "2025-SLS-0162", name: "Farwa Sarfraz", phone: "3292244422" },
+             { id: "2025-SLS-0163", name: "M.IBRAHIM ASGHAR", phone: "3204596131" },
+             { id: "2025-SLS-0164", name: "Aman Iqbal", phone: "3137036226" },
+             { id: "2025-SLS-0165", name: "Ruqia", phone: "3134667349" },
+             { id: "2025-SLS-0166", name: "Mohd Salim", phone: "8174900996" },
+             { id: "2025-SLS-0167", name: "Ghulam Bilal", phone: "3418742465" },
+             { id: "2025-SLS-0168", name: "Abdullah Salamat", phone: "3707411829" },
+             { id: "2025-SLS-0169", name: "Samra gull", phone: "3060323242" },
+             { id: "2025-SLS-0170", name: "Abdul Qayyum", phone: "3245717958" },
+             { id: "2025-SLS-0171", name: "Ahmar Yaseen", phone: "3225271774" },
+             { id: "2025-SLS-0172", name: "Shahzaib Hassan", phone: "3411356023" },
+             { id: "2025-SLS-0173", name: "Harmain Malik", phone: "3247820226" },
+             { id: "2025-SLS-0174", name: "Muhammad Khubaib Asif", phone: "3312544331" },
+             { id: "2025-SLS-0175", name: "Ahmad Ashfaq", phone: "3339698470" },
+             { id: "2025-SLS-0176", name: "Samra Zulkarnain", phone: "3156545154" },
+             { id: "2025-SLS-0177", name: "Muhammad Idrees", phone: "3437180749" },
+             { id: "2025-SLS-0178", name: "Rizwan Ali", phone: "3187413963" },
+             { id: "2025-SLS-0187", name: "Muhammad Shoaib", phone: "3078478359" },
+             { id: "2025-SLS-0188", name: "Muhammad Imad ud din", phone: "3294457727" },
+             { id: "2025-SLS-0189", name: "Muhammad Hassaan Hafeez", phone: "3171544050" },
+             { id: "2025-SLS-0190", name: "Baqir Ali", phone: "3085270936" },
+             { id: "2025-SLS-0191", name: "Moeez manzoor", phone: "3363699777" },
+             { id: "2025-SLS-0192", name: "Nayyar Husnain", phone: "3238440344" },
+             { id: "2025-SLS-0193", name: "Faraz Sharazi", phone: "3141606501" },
+             { id: "2025-SLS-0194", name: "Muhammad Awais", phone: "3044189794" },
+             { id: "2025-SLS-0195", name: "Ghina Ahmed", phone: "3136331317" },
+             { id: "2025-SLS-0196", name: "Muhammad Qasim", phone: "3700430188" },
+             { id: "2025-SLS-0197", name: "Muhammad Tayyab Amjad", phone: "3457596857" },
+             { id: "2025-SLS-0198", name: "Saleem Akhtar", phone: "3410277029" },
+             { id: "2025-SLS-0199", name: "Sheharyar Hassan", phone: "3476861929" },
+             { id: "2025-SLS-0200", name: "KASHIF LATIF", phone: "3032664708" },
+             { id: "2025-SLS-0201", name: "Mubashra Naheed", phone: "3492190030" },
+             { id: "2025-SLS-0202", name: "Aisha Noor", phone: "3357594435" },
+             { id: "2025-SLS-0203", name: "Muhammad Kashif", phone: "3024879910" },
+             { id: "2025-SLS-0206", name: "Syed Ahsan Kamal", phone: "3001775144" },
+             { id: "2025-SLS-0207", name: "Shahzaib Hassan", phone: "3411356023" },
+             { id: "2025-SLS-0208", name: "Muhammad Shahzaib Zia", phone: "3060131872" },
+             { id: "2025-SLS-0210", name: "Meerab Akmal", phone: "3356309950" },
+             { id: "2025-SLS-0211", name: "Muhammad Fazal-E-Rasool", phone: "3370477037" },
+             { id: "2025-SLS-0212", name: "Muhammad Mohsin Shahzad", phone: "3291664980" },
+             { id: "2025-SLS-0214", name: "Subhan Ali", phone: "3296125995" },
+             { id: "2025-SLS-0215", name: "Muhammad Abdullah", phone: "3037536865" },
+             { id: "2025-SLS-0217", name: "Sarwat Ikhlaq", phone: "3325992567" },
+             { id: "2025-SLS-0219", name: "Ahmad Baig", phone: "3184254095" },
+             { id: "2025-SLS-0220", name: "Muhammad Qamar", phone: "3049196709" },
+             { id: "2025-SLS-0221", name: "Tanveer Abbas", phone: "3558760860" },
+             { id: "2025-SLS-0222", name: "Muhammad Abdullah Khan", phone: "3437442736" },
+             { id: "2025-SLS-0223", name: "Yashifa batool", phone: "3035662780" },
+             { id: "2025-SLS-0224", name: "Lalchand", phone: "3450359451" },
+             { id: "2025-SLS-0225", name: "Engr Waleed Khan", phone: "3175543521" },
+             { id: "2025-SLS-0226", name: "Amna Abaid Ullah", phone: "3266017741" },
+             { id: "2025-SLS-0227", name: "Laiba Khan", phone: "3305487588" },
+             { id: "2025-SLS-0228", name: "Kinza Nali", phone: "3337145685" },
+             { id: "2025-SLS-0229", name: "Ahmar Yaseen", phone: "3124697313" },
+             { id: "2025-SLS-0205", name: "Muhammad zain nadeem", phone: "3267760151" },
+             { id: "2025-SLS-0179", name: "Sufyan Shahid", phone: "3251548232" },
+             { id: "2025-SLS-0180", name: "Mirza Muhammad Ahmad Baig", phone: "3186975628" },
+             { id: "2025-SLS-0181", name: "Ehsan Ullah", phone: "3434345589" },
+             { id: "2025-SLS-0182", name: "Muhammad Asghar", phone: "3035845380" },
+             { id: "2025-SLS-0183", name: "Ammar Ahmad Khan", phone: "3189466228" },
+             { id: "2025-SLS-0184", name: "Ali Hassan", phone: "3404445624" },
+             { id: "2025-SLS-0185", name: "Muhammad Asim", phone: "3217283403" },
+             { id: "2025-SLS-0186", name: "Ali Shehzad", phone: "3255723412" }
+        ];
+
+        // Variable to store currently verified member
+        let currentVerifiedMember = null;
+
+        // Function to format name for filename (removes special chars, replaces spaces with underscores)
+        function formatNameForFilename(name) {
+            return name
+                .trim()
+                .replace(/[^\w\s]/g, '') // Remove special characters
+                .replace(/\s+/g, '_')     // Replace spaces with underscores
+                + '.jpg';                  // Add jpg extension
+        }
+
+        // Function to show/hide hero section based on page
+        function updateHeroVisibility(pageId) {
+            const heroSection = document.getElementById('globalHero');
+            // Hide hero on certificates, verify, and blog pages
+            if (pageId === 'certificates' || pageId === 'verify' || pageId === 'blog') {
+                heroSection.style.display = 'none';
+            } else {
+                heroSection.style.display = 'flex'; // Show on home and events
+            }
+        }
+
+        // Modified showPage function
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update hero visibility
+            updateHeroVisibility(pageId);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if(window.innerWidth <= 768) {
+                document.getElementById('navLinks').classList.remove('active');
+            }
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function runVerification() {
+            const idInput = document.getElementById('memberId').value.trim();
+            const display = document.getElementById('resultDisplay');
+            const found = members.find(m => m.id === idInput);
+
+            if(found) {
+                display.style.color = "green";
+                display.innerHTML = `<i class="fas fa-check-circle"></i> Verified Member: ${found.name}`;
+            } else {
+                display.style.color = "red";
+                display.innerHTML = `<i class="fas fa-times-circle"></i> Member Not Found.`;
+            }
+        }
+
+        // New function to verify and show JPG certificate
+        function verifyAndShowCertificate() {
+            const idInput = document.getElementById('certId').value.trim();
+            const passInput = document.getElementById('certPass').value.trim();
+            const display = document.getElementById('certResult');
+            const certImageContainer = document.getElementById('certificateImageContainer');
+            const certImage = document.getElementById('certificateImage');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            const found = members.find(m => m.id === idInput);
+
+            if(found) {
+                const lastFour = found.phone.slice(-4);
+                if(passInput === lastFour) {
+                    // Password correct - show JPG certificate
+                    currentVerifiedMember = found;
+                    
+                    // Format member name for filename
+                    const filename = formatNameForFilename(found.name);
+                    
+                    // Set image source - assuming certificates are in a 'certificates' folder
+                    certImage.src = `certificates/${filename}`;
+                    
+                    // Show the image container
+                    certImageContainer.style.display = 'block';
+                    
+                    // Enable download button
+                    downloadBtn.disabled = false;
+                    
+                    display.style.color = "green";
+                    display.innerHTML = `<i class="fas fa-check-circle"></i> Certificate found for ${found.name}`;
+                    
+                    // Handle image loading error
+                    certImage.onerror = function() {
+                        display.style.color = "orange";
+                        display.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Certificate image not found. Please ensure the file "${filename}" exists in the certificates folder.`;
+                        certImageContainer.style.display = 'none';
+                        downloadBtn.disabled = true;
+                        currentVerifiedMember = null;
+                    };
+                } else {
+                    display.style.color = "red";
+                    display.innerHTML = "Incorrect Password. Please use the last 4 digits of your phone number.";
+                    certImageContainer.style.display = 'none';
+                    downloadBtn.disabled = true;
+                    currentVerifiedMember = null;
+                }
+            } else {
+                display.style.color = "red";
+                display.innerHTML = "Membership ID not found.";
+                certImageContainer.style.display = 'none';
+                downloadBtn.disabled = true;
+                currentVerifiedMember = null;
+            }
+        }
+
+        // Modified download function for JPG certificates
+        function downloadCertificate() {
+            if (!currentVerifiedMember) {
+                alert('Please verify your certificate first.');
+                return;
+            }
+
+            const filename = formatNameForFilename(currentVerifiedMember.name);
+            
+            // Create a link to download the JPG
+            const link = document.createElement('a');
+            link.href = `certificates/${filename}`;
+            link.download = filename; // This will download with the member's name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            document.getElementById('certResult').innerHTML = `<i class="fas fa-check-circle"></i> Download started for ${currentVerifiedMember.name}'s certificate.`;
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            // Show home page by default and set hero visibility
+            showPage('home');
+            
+            // Reset certificate container on page load
+            document.getElementById('certificateImageContainer').style.display = 'none';
+            document.getElementById('downloadBtn').disabled = true;
+        };
+    </script>
+</body>
+</html>
