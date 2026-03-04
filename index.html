@@ -44,9 +44,12 @@
             list-style: none; 
             align-items: center; 
         }
-        
+        img {
+    margin-bottom: 40px; /* Is value ko apni zaroorat ke mutabiq change kar len */
+       }
         .nav-links li { margin-left: 10px; list-style: none; }
 
+        /* Unified Button Style */
         .nav-links a {
             text-decoration: none;
             color: var(--text-gray);
@@ -55,9 +58,10 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             display: inline-block;
-            border: 2px solid transparent;
+            border: 2px solid transparent; /* Keeps spacing consistent */
         }
 
+        /* Unified Hover State */
         .nav-links a:hover {
             background-color: var(--primary-blue);
             color: white;
@@ -89,12 +93,12 @@
         .hero p { font-size: 1.2rem; margin: 15px 0 30px; }
 
         .btn-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .btn-black { background: #222; color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; display: inline-block; text-align: center; margin-bottom: 10px;}
+        .btn-black { background: #222; color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; display: inline-block; text-align: center;}
         .btn-black:hover { background: #000; }
         .btn-blue { background: var(--primary-blue); color: white; padding: 12px 35px; text-decoration: none; border-radius: 5px; font-weight: bold; }
 
         /* Page Management */
-        .page-content { display: none; padding-top: 100px; }
+        .page-content { display: none; }
         .page-content.active { display: block; }
 
         .section-padding { padding: 60px 10%; text-align: center; }
@@ -134,7 +138,7 @@
         /* Blog Section Styling */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
         .blog-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: left; }
-        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 0; } /* Reset margin-bottom for blog images */
         .blog-info { padding: 20px; }
         .blog-info h3 { margin-bottom: 10px; color: var(--text-gray); }
         .blog-info p { font-size: 0.9rem; line-height: 1.6; color: #666; }
@@ -149,7 +153,7 @@
         .event-btn:hover { transform: translateY(-10px); background: #46b8da; }
 
         /* Footer */
-        footer { background: var(--dark-bg); color: white; padding: 50px 10% 20px; margin-top: 50px; }
+        footer { background: var(--dark-bg); color: white; padding: 50px 10% 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .social-icons { margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap; }
         .social-icons a { color: white; font-size: 24px; transition: 0.3s; }
@@ -160,18 +164,35 @@
             nav { padding: 10px 20px; }
             .logo img { height: 60px; }
             .hamburger { display: block; }
+
             .nav-links { 
-                display: none; flex-direction: column; position: absolute; top: 100%; left: 0; 
-                width: 100%; background: white; padding: 20px 0; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-top: 1px solid #eee;
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: white; 
+                padding: 20px 0; 
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
             }
+
             .nav-links.active { display: flex; }
             .nav-links li { margin: 5px 0; width: 100%; text-align: center; }
             .nav-links a { width: 80%; padding: 12px; }
+
             .hero { margin-top: 60px; height: auto; padding: 80px 20px; }
             .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            
             .section-padding { padding: 40px 5%; }
+            .blue-title { font-size: 1.8rem; }
+            
             .team-row, .team-row.reverse { flex-direction: column; text-align: center; }
             .team-img-wrapper img { max-width: 280px; }
+            
+            .form-container { padding: 20px; }
         }
     </style>
 </head>
@@ -198,12 +219,27 @@
         </div>
     </section>
 
+    <template id="chairman-template">
+        <div class="team-row chairman-card">
+            <div class="team-content">
+                <h2 class="blue-title" style="font-size: 2rem;">Chairman</h2>
+                <h3>Engr Farooq Baloch</h3>
+                <p><strong>Automotive Engineer</strong></p>
+                <p>I'm honored to introduce the Serve and Lead Society, which I proudly founded with a vision to empower UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
+            </div>
+            <div class="team-img-wrapper">
+                <img src="cr.jpg" alt="Chairman Farooq Baloch">
+            </div>
+        </div>
+    </template>
+
     <div id="home" class="page-content active">
         <section id="about-section" class="section-padding">
             <h2 class="blue-title">About us</h2>
             <p class="about-text">
                 "Building UET Lahore Leaders Through Service and Growth."<br><br>
-                Our vision is to empower students by creating a dynamic platform where potential meets opportunity...
+                Our vision is to empower students by creating a dynamic platform where potential meets opportunity. We are dedicated to providing meaningful internships, job placements, and career counseling sessions that guide students toward success and self-discovery. Beyond professional growth, we are equally committed to student welfare supporting deserving individuals by helping with university fees, ensuring that no financial challenge hinders their educational journey.
+                In addition, we aim to organize industrial tours and educational trips that bridge the gap between academic learning and practical experience, inspiring students to explore, learn, and grow beyond the classroom. Through these collective efforts, we aspire to cultivate a generation of capable, confident, and compassionate students who not only achieve personal success but also contribute positively to the community around them.
             </p>
 
             <div class="advantages-grid">
@@ -213,15 +249,37 @@
                 <div class="adv-card"><i class="fas fa-check-circle"></i><h3>10+</h3><p>Jobs Secured</p></div>
             </div>
 
-            <div class="team-row">
+            <div id="about-chairman-container"></div>
+
+            <div class="team-row reverse">
                 <div class="team-content">
-                    <h2 class="blue-title" style="font-size: 2rem;">Chairman</h2>
-                    <h3>Engr Farooq Baloch</h3>
-                    <p><strong>Automotive Engineer</strong></p>
-                    <p>I'm honored to introduce the Serve and Lead Society, which I proudly founded with a vision to empower UET Lahore students through growth, opportunity, and service.</p>
+                    <h2 class="blue-title" style="font-size: 2rem;">President</h2>
+                    <h3>Ali Hassan (2025-26)</h3>
+                    <p><strong>Mechanical Engineer</strong></p>
+                    <p>I'm honored to introduce the Serve and Lead Society, a vision dedicated to empowering UET Lahore students through growth, opportunity, and service. Our mission is to help students discover their potential, build careers, and create real impact.</p>
                 </div>
                 <div class="team-img-wrapper">
-                    <img src="cr.jpg" alt="Chairman">
+                    <img src="pre.jpg" alt="President Ali Hassan">
+                </div>
+             <div class="team-row chairman-card">
+                <div class="team-content">
+                    <h2 class="blue-title" style="font-size: 2rem;">Vice President</h2>
+                    <h3>Ali Shehzad (2025-26)</h3>
+                    <p><strong>Automotive Engineer</strong></p>
+                    <p>I’m honored to serve as the Vice President of the Serve and Lead Society, a platform dedicated to empowering UET Lahore students through learning, leadership, and service. Our mission is to guide students in exploring their potential, building their professional paths, and contributing meaningfully to society through internships, welfare initiatives, and educational opportunities. I encourage all students to join us — to learn with purpose, lead with confidence, and work together toward growth and excellence.</p>
+                </div>
+                <div class="team-img-wrapper">
+                    <img src="Shehzad.jpg" alt="Vice President Ali Shehzad">
+                </div>
+             <div class="team-row reverse">
+                <div class="team-content">
+                    <h2 class="blue-title" style="font-size: 2rem;">General Secretary</h2>
+                    <h3>Nayyab Khalid (2025-26)</h3>
+                    <p><strong>Chemist</strong></p>
+                    <p>I am privileged to serve as the General Secretary of the Serve and Lead Society, where our focus is to strengthen coordination, communication, and execution of initiatives that benefit the students of UET Lahore. My role is to ensure that our activities — from internships and professional development sessions to welfare and educational programs — are organized efficiently and delivered with excellence.</p>
+                </div>
+                <div class="team-img-wrapper">
+                    <img src="Nay.jpg" alt="General Secretary Nayyab Khalid">
                 </div>
             </div>
         </section>
@@ -231,7 +289,7 @@
         <section class="section-padding">
             <h2 class="blue-title">Our <span style="color: #000;">Events</span></h2>
             <div class="events-grid">
-                <button class="event-btn">Welcome Event</button>
+                <button class="event-btn">Welcome Event</span></button>
                 <button class="event-btn">Career Counseling</button>
                 <button class="event-btn">Internship Fair</button>
                 <button class="event-btn">Farewell Night</button>
@@ -241,16 +299,18 @@
 
     <div id="certificates" class="page-content">
         <section class="section-padding">
-            <div class="team-row">
-                <div class="team-content">
-                    <h2 class="blue-title" style="font-size: 2rem;">Chairman's Message</h2>
-                    <h3>Farooq Baloch</h3>
-                    <p>Our mission is to empower students to unlock their potential.</p>
-                </div>
-                <div class="team-img-wrapper">
-                    <img src="cr2.jpg" alt="Farooq Baloch">
-                </div>
+            
+           <div class="team-row chairman-card">
+            <div class="team-content">
+                <h2 class="blue-title" style="font-size: 2rem;">Chairman's Message</h2>
+                <h3>Farooq Baloch</h3>
+                <p><strong>Automotive Engineer</strong></p>
+                <p>I’m honored to lead the Serve and Lead Society as its Chairman and Founder, guiding UET Lahore students toward growth, leadership, and meaningful service. Our mission is to empower students to unlock their potential, pursue opportunities, and make a real impact in their community.</p>
             </div>
+            <div class="team-img-wrapper">
+                <img src="cr2.jpg" alt="Farooq Baloch">
+            </div>
+         </div>
                 
             <h2 class="blue-title">Membership <span style="color: #000;">Certificates</span></h2>
             <p style="margin-bottom: 20px;">Enter your credentials below to download your membership certificate.</p>
@@ -260,12 +320,12 @@
                     <input type="text" id="certId" class="verify-input" placeholder="20XX-SLS-XXXX">
                 </div>
                 <div class="input-group">
-                    <label class="input-label">Password (Last 4 digits of Phone)</label>
+                    <label class="input-label">Password</label>
                     <input type="password" id="certPass" class="verify-input" placeholder="XXXX">
                 </div>
                 <button class="btn-black" style="width: 100%;" onclick="downloadCertificate()">Download</button>
                 <div id="certResult" class="result-msg"></div>
-                <button class="btn-black" style="width: 100%; margin-top: 10px;" onclick="window.location.href='https://other-certificates.vercel.app/'">
+                <button class="btn-black" style="width: 100%;" onclick="window.location.href='https://other-certificates.vercel.app/'">
                 View Other Certificates
                 </button>
             </div>
@@ -274,16 +334,18 @@
 
     <div id="verify" class="page-content">
          <section class="section-padding">
-            <div class="team-row">
-                <div class="team-content">
-                    <h2 class="blue-title" style="font-size: 2rem;">Founder's Message</h2>
-                    <h3>M Farooq Ahmad</h3>
-                    <p>Building UET Lahore leaders through service.</p>
-                </div>
-                <div class="team-img-wrapper">
-                    <img src="cr1.jpg" alt="Farooq Baloch">
-                </div>
-            </div>        
+           
+             <div class="team-row chairman-card">
+            <div class="team-content">
+                <h2 class="blue-title" style="font-size: 2rem;">Founder's Message</h2>
+                <h3>M Farooq Ahmad</h3>
+                <p><strong>Automotive Engineer</strong></p>
+                <p>I’m honored to lead the Serve and Lead Society as its Chairman and Founder, guiding UET Lahore students toward growth, leadership, and meaningful service. Our mission is to empower students to unlock their potential, pursue opportunities, and make a real impact in their community.</p>
+            </div>
+            <div class="team-img-wrapper">
+                <img src="cr1.jpg" alt="Farooq Baloch">
+            </div>
+         </div>        
             
             <h2 class="blue-title">Members <span style="color: #000;">Verification</span></h2>
             <div class="form-container">
@@ -296,115 +358,26 @@
             </div>
         </section>
     </div>
-
     <div id="blog" class="page-content">
         <section class="section-padding">
             <h2 class="blue-title">Society <span style="color: #000;">Blog</span></h2>
+            <p>Latest updates and stories from Serve & Lead Society</p>
             <div class="blog-grid">
                 <div class="blog-card">
                     <img src="b1.jpg" alt="Blog 1">
                     <div class="blog-info">
                         <h3>Our Recent Workshop</h3>
-                        <p>Leadership workshop at UET Lahore.</p>
+                        <p>We recently conducted a leadership workshop at UET Lahore to inspire new members. This is a placeholder description that you can change later.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h3>Serve & Lead Society</h3>
-                <p>UET Lahore Chapter</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <div class="blog-card">
+                    <img src="b2.jpg" alt="Blog 2">
+                    <div class="blog-info">
+                        <h3>Industrial Visit 2025</h3>
+                        <p>Students explored the latest automotive trends during our last industrial tour. You can add your own content here easily.</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // --- MEMBER DATABASE ---
-        // Add your members here. The 'phone' last 4 digits will be the password.
-        // The image file should be named: Name.jpg (e.g., Ali Hassan.jpg)
-        const memberData = [
-            { id: "2024-SLS-001", name: "Ali Hassan", phone: "03001234567" },
-            { id: "2024-SLS-002", name: "Nayyab Khalid", phone: "03217654321" }
-        ];
-
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Header Visibility Logic
-            const hero = document.getElementById('globalHero');
-            if (pageId === 'home' || pageId === 'events') {
-                hero.style.display = 'flex';
-            } else {
-                hero.style.display = 'none';
-            }
-
-            // Close mobile menu
-            document.getElementById('navLinks').classList.remove('active');
-            window.scrollTo(0,0);
-        }
-
-        function downloadCertificate() {
-            const idInput = document.getElementById('certId').value.trim();
-            const passInput = document.getElementById('certPass').value.trim();
-            const resultMsg = document.getElementById('certResult');
-
-            // Find member
-            const member = memberData.find(m => m.id === idInput);
-
-            if (member) {
-                // Get last 4 digits of phone
-                const correctPass = member.phone.slice(-4);
-                
-                if (passInput === correctPass) {
-                    resultMsg.style.color = "green";
-                    resultMsg.innerText = "Verified! Downloading your certificate...";
-                    
-                    // Trigger JPG download based on Name
-                    const fileName = member.name + ".jpg";
-                    const link = document.createElement('a');
-                    link.href = fileName;
-                    link.download = fileName;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                } else {
-                    resultMsg.style.color = "red";
-                    resultMsg.innerText = "Incorrect Password!";
-                }
-            } else {
-                resultMsg.style.color = "red";
-                resultMsg.innerText = "Membership ID not found!";
-            }
-        }
-
-        function runVerification() {
-            const idInput = document.getElementById('memberId').value.trim();
-            const display = document.getElementById('resultDisplay');
-            const member = memberData.find(m => m.id === idInput);
-
-            if (member) {
-                display.style.color = "green";
-                display.innerHTML = `<i class="fas fa-check-circle"></i> Verified Member: ${member.name}`;
-            } else {
-                display.style.color = "red";
-                display.innerHTML = `<i class="fas fa-times-circle"></i> Invalid ID`;
-            }
-        }
-    </script>
-</body>
-</html>
+                <div class="blog-card">
+                    <img src="b.jpg" alt="Blog 3">
+                    <div class="blog-info">
+                        <h3>Community Service Day</h3>
